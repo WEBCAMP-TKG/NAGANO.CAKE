@@ -22,4 +22,5 @@ Rails.application.routes.draw do
    
    patch 'customers/withdraw' => 'customers#withdraw', as: 'withdraw_customer'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+ end
 end
