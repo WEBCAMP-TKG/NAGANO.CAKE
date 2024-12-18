@@ -26,11 +26,11 @@
       <tr>
         <td>販売ステータス</td>
         <td>
-        　<% if @items.is_active == true %>
-     　     <span class="text-success font-weight-bold">販売中</span>
-    　 　   <% else %>
-         　 <span class='text-secondary font-weight-bold'>販売停止中</span>
-    　　    <% end %>
+          <% if @items.is_sell_status == true %>
+            <span class="text-success font-weight-bold">販売中</span>
+          <% else %>
+            <span class='text-secondary font-weight-bold'>販売停止中</span>
+          <% end %>
         </td>
       </tr>
     </tbody>
@@ -40,5 +40,5 @@
 </div> <span></span>
 
 <div class="container mb-4">
- <%= link_to '編集する', edit_admin_item_path(@items.id), class: 'btn btn-success  px-4' %>
+  <%= link_to '編集する', edit_admin_item_path(@items.id), class: 'btn btn-success  px-4' %>
 </div>

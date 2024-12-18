@@ -36,10 +36,10 @@
         <tr>
         <div class="form-group">
           <th><%= f.label :販売ステータス %></th>
-          <td><%= f.radio_button :is_active, true, checked: true %>
-              <%= f.label :is_active, "販売中" %>
-              <%= f.radio_button :is_active, false %>
-              <%= f.label :is_active, "販売停止中" %>
+          <td><%= f.radio_button :is_sell_status, true, checked: true %>
+              <%= f.label :is_sell_status, "販売中" %>
+              <%= f.radio_button :is_sell_status, false %>
+              <%= f.label :is_sell_status, "販売停止中" %>
           </td>
         </div>
         </tr>
