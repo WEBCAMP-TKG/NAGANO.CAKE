@@ -27,4 +27,3 @@ class Item < ApplicationRecord
       image
   end
 end
-
