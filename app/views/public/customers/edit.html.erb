@@ -9,17 +9,17 @@
       <table class="table table-borderless">
         <tr>
           <td>氏名</td>
-          <td><%= f.text_field :last_name %></td>
+          <td><%= f.text_field :family_name %></td>
           <td><%= f.text_field :first_name %></td>
         </tr>
         <tr>
           <td>フリガナ</td>
-          <td><%= f.text_field :last_name_kana %></td>
+          <td><%= f.text_field :family_name_kana %></td>
           <td><%= f.text_field :first_name_kana %></td>
         </tr>
         <tr>
           <td>郵便番号</td>
-          <td><%= f.text_field :postal_code %></td>
+          <td><%= f.text_field :post_code %></td>
         </tr>
         <tr>
           <td>住所</td>
@@ -29,7 +29,7 @@
         </tr>
         <tr>
           <td>電話番号</td>
-          <td><%= f.text_field :telephone_number%></td>
+          <td><%= f.text_field :tell_number%></td>
         </tr>
         <tr>
           <td>メールアドレス</td>
@@ -38,7 +38,7 @@
         <tr>
           <td></td>
           <td><%= f.submit "編集内容を保存", class:"btn btn-success" %></td>
-          <td><%=link_to "退会する", customers_unsubscribe_path, class:"btn btn-danger" %></td>
+          <td><%=link_to "退会する", customers_check_path, class:"btn btn-danger" %></td>
         </tr>
       </table>
       <% end %>

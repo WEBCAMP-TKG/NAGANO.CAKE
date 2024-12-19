@@ -7,14 +7,14 @@ class Public::ItemsController < ApplicationController
     # ジャンルが選択されている場合
     if params[:genre_id].present?
       @genre = Genre.find(params[:genre_id])
-      @search_items = @genre.items.where(is_active: true)
+      @search_items = @genre.items.where(is_sell_status: true)
     else
-      @search_items = Item.where(is_active: true)
+      @search_items = Item.where(is_sell_status: true)
     end
 
     # 検索条件がある場合、検索結果で絞り込む
     if params[:q].present?
-      @search_items = @search.result.where(is_active: true)
+      @search_items = @search.result.where(is_sell_status: true)
     end
 
     @total_items = @search_items.count
