@@ -7,7 +7,7 @@
     <div class='col-xl-6 col-md-6'>
       <p><strong><%= @item.name %></strong></p>
       <p><%= @item.introduction %></p>
-      <p>￥<%= @item.add_tax_price.to_s(:delimited) %>(税込)</p>
+      <p>￥<%= @item.price.to_s(:delimited) %>(税込)</p>
       <%= form_with url: cart_items_path, method: :post do |f| %>
         <div class="form-group d-flex">
           <div class="mx-2">
@@ -35,7 +35,7 @@
 
         
 
-        <%= f.submit "カートに入れる", class: "btn btn-primary" %>
+        <%= f.submit "カートに入れる", class: "btn btn-success" %>
       <% end %>
 
         </div>

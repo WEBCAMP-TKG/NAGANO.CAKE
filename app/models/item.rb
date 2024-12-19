@@ -8,11 +8,11 @@ class Item < ApplicationRecord
   validates :name,          presence: true
   validates :introduction,  presence: true
   validates :genre_id,      presence: true
-  validates :price,         presence: true
-  validates :is_active,     inclusion: [true, false]
+  validates :nontaxprice,         presence: true
+  validates :is_sell_status,     inclusion: [true, false]
 
-    def add_tax_price
-        (self.price * 1.10).round
+    def price
+        (self.nontaxprice * 1.10).round
     end
 
   def self.ransackable_attributes(auth_object = nil)
