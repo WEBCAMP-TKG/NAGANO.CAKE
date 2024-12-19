@@ -21,7 +21,7 @@
                 <p style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
                   <%= link_to item.name, item_path(item.id) %>
                 </p>
-                <p>¥<%= number_to_currency(item.add_tax_price, delimiter: ',', unit: '', precision: 0) %></p>
+                <p>¥<%= number_to_currency(item.price, delimiter: ',', unit: '', precision: 0) %></p>
               </div>
             </div>
           <% end %>
