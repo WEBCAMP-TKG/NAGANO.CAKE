@@ -9,16 +9,16 @@
       <tr>
         <td>名前</td>
         <td><%= f.label :name, "(姓)" %></td>
-        <td><%= f.text_field :last_name, placeholder: "令和", autocomplete: "last_name" %></td>
+        <td><%= f.text_field :family_name, placeholder: "大谷", autocomplete: "family_name" %></td>
         <td><%= f.label :name, "(名)" %></td>
-        <td><%= f.text_field :first_name, placeholder: "道子", autocomplete: "first_name" %></td>
+        <td><%= f.text_field :first_name, placeholder: "翔兵", autocomplete: "first_name" %></td>
       </tr>
       <tr>
         <td>フリガナ</td>
         <td><%= f.label :name, "(セイ)" %></td>
-        <td><%= f.text_field :last_name_kana, placeholder: "レイワ", autocomplete: "last_name_kana" %></td>
+        <td><%= f.text_field :family_name_kana, placeholder: "オオタニ", autocomplete: "family_name_kana" %></td>
         <td><%= f.label :name, "(メイ)" %></td>
-        <td><%= f.text_field :first_name_kana, placeholder: "ミチコ", autocomplete: "first_name_kana" %></td>
+        <td><%= f.text_field :first_name_kana, placeholder: "ショウヘイショウヘイ", autocomplete: "first_name_kana" %></td>
       </tr>
       <tr>
         <td>メールアドレス</td>
@@ -30,14 +30,14 @@
       <tr>
         <td>郵便番号(ハイフンなし)</td>
         <td></td>
-        <td><%= f.text_field :postal_code, placeholder: "0000000", autocomplete: "postal_code" %></td>
+        <td><%= f.text_field :post_code, placeholder: "0000000", autocomplete: "post_code" %></td>
         <td></td>
         <td></td>
       </tr>
       <tr>
         <td>住所</td>
         <td></td>
-        <td><%= f.text_field :address, placeholder: "東京都渋谷区代々木神園町0-0",  autocomplete: "adderss", style: "width: 225%;" %></td>
+        <td><%= f.text_field :address, placeholder: "東京都西新宿1-1-0",  autocomplete: "adderss", style: "width: 225%;" %></td>
         <td></td>
         <td></td>
       </tr>

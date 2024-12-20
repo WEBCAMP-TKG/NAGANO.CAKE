@@ -9,11 +9,11 @@
        <tbody>
       <tr>
         <td class="col-3">
-          <%= f.label :postal_code, "郵便番号(ハイフンなし)" %>
+          <%= f.label :post_code, "郵便番号(ハイフンなし)" %>
         </td>
         <td>
         </td>
-        <td><%= f.text_field :postal_code, placeholder: "0000000" %>
+        <td><%= f.text_field :post_code, placeholder: "0000000" %>
         </td>
         <td></td>
         <td></td>
@@ -65,7 +65,7 @@
   <tbody>
     <% @addresses.each do |f| %>
       <tr>
-        <td><%= f.postal_code %></td>
+        <td><%= f.post_code %></td>
         <td><%= f.address %></td>
         <td><%= f.name %></td>
         <td>
