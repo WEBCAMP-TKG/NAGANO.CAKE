@@ -68,9 +68,9 @@
       <% @order.order_details.each do |order_detail| %>
       <tr>
         <td><%= order_detail.item.name %></td> <!-- 商品名 -->
-        <td><%= number_to_currency(order_detail.item.add_tax_price, delimiter: ',', unit: '', precision: 0) %></td> <!-- 単価 -->
+        <td><%= number_to_currency(order_detail.item.price, delimiter: ',', unit: '', precision: 0) %></td> <!-- 単価 -->
         <td><%= order_detail.amount %></td>
-        <td><%= number_to_currency(order_detail.item.add_tax_price * order_detail.amount, delimiter: ',', unit: '', precision: 0) %></td>
+        <td><%= number_to_currency(order_detail.item.price * order_detail.amount, delimiter: ',', unit: '', precision: 0) %></td>
       </tr>
       <% end %>
     </tbody>

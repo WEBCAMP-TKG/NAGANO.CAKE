@@ -23,10 +23,10 @@
                 <% @cart_items.each do |f| %>
                 <tr>
                   <td class="align-middle"><%= f.item.name %></td>
-                  <td class="align-middle"><%= f.item.add_tax_price.to_s(:delimited) %></td>
+                  <td class="align-middle"><%= f.item.price.to_s(:delimited) %></td>
                   <td class="align-middle"><%= f.amount %></td>
-                  <td class="align-middle"><%= number_with_delimiter(f.item.add_tax_price * f.amount) %></td>
-                  <% shipping_cost_ex += f.item.add_tax_price * f.amount %>
+                  <td class="align-middle"><%= number_with_delimiter(f.item.price * f.amount) %></td>
+                  <% shipping_cost_ex += f.item.price * f.amount %>
                   <%= order_detail.hidden_field :item_id, value: f.item_id %>
                   <%= order_detail.hidden_field :amount, value: f.amount %>
                   <%= order_detail.hidden_field :price, value: f.item.price %>
@@ -60,19 +60,19 @@
             </div>
             <div>
               <b>お届け先 </b>
-              <% if params[:order][:shipping_address] == "my_address" %>
+              <% if params[:order][:address] == "my_address" %>
                 <span> 〒<%= current_customer.postcode %> <%= current_customer.address %></span>
                 <span> <%= current_customer.family_name + current_customer.first_name %> 様</span>
                 <%= f.hidden_field :postcode, value: current_customer.postcode %>
                 <%= f.hidden_field :address, value: current_customer.address %>
                 <%= f.hidden_field :name, value: current_customer.family_name + current_customer.first_name %>
-              <% elsif params[:order][:shipping_address] == "select_address" %>
+              <% elsif params[:order][:address] == "select_address" %>
                 <span> 〒<%= @address.postcode %> <%= @address.address %></span>
                 <span> <%= @address.name %> 様</span>
                 <%= f.hidden_field :postcode, value: @address.postcode %>
                 <%= f.hidden_field :address, value: @address.address %>
                 <%= f.hidden_field :name, value: @address.name %>
-              <% elsif params[:order][:shipping_address] == "new_address" %>
+              <% elsif params[:order][:address] == "new_address" %>
                 <span> 〒<%= params[:new_address][0][:post] %> <%= params[:new_address][0][:address] %></span>
                 <span> <%= params[:new_address][0][:name] %> 様</span>
                 <%= f.hidden_field :post, value: params[:new_address][0][:postcode] %>
@@ -82,8 +82,8 @@
             </div>
           </div>
           <%= f.hidden_field :payment_method, value: params[:order][:payment_method]  %>
-          <%= f.hidden_field :total_payment, value: shipping_cost_ex + @order.shipping_cost %>
-          <%= f.hidden_field :shipping_cost, value: @order.shipping_cost %>
+          <%= f.hidden_field :total_price, value: shipping_cost_ex + @order.shipping_fee %>
+          <%= f.hidden_field :shipping_fee, value: @order.shipping_fee %>
           <%= f.hidden_field :status, value: 0 %>
           <div class="text-center"><%= f.submit '注文を確定する', class:"btn btn-success" %></div>
         <% end %>
