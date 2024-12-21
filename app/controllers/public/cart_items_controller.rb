@@ -29,49 +29,47 @@ class Public::CartItemsController < ApplicationController
     redirect_to cart_items_path, notice: 'カートが空になりました'
   end
 
-# POST	/cart_items
-  def create
-    if customer_signed_in?
-      quantity = params[:quantity].to_i
-      logger.debug "Quantity: #{quantity}, Item ID: #{params[:item_id]}"
+# POST  /cart_items
+def create
+  if customer_signed_in?
+    handle_cart_item(params[:item_id], params[:amount].to_i)
+  else
+    flash[:alert] = "ログインしてください。"
+    redirect_to item_path(params[:item_id])
+  end
+end
 
-      if quantity > 0
-        # 既に同じ商品がカートに存在するか確認
-        existing_cart_item = current_customer.cart_items.find_by(item_id: params[:item_id])
+private
 
-        if existing_cart_item
-          # 既存のカートアイテムがある場合、現在の数量と追加したい数量の合計が10を超えないか確認
-          new_quantity = existing_cart_item.amount + quantity
-          if new_quantity > 10
-            redirect_to item_path(params[:item_id]), alert: 'カート内の数量は10個までです'
-          else
-            existing_cart_item.amount = new_quantity
-            if existing_cart_item.save
-              redirect_to cart_items_path, notice: 'カート内の商品の数量が更新されました'
-            else
-              redirect_to item_path(params[:item_id]), alert: '商品の数量を更新できませんでした'
-            end
-          end
-        else
-          # 既存のカートアイテムがない場合、新規作成。ただし、数量は10個以下にする
-          if quantity > 10
-            redirect_to item_path(params[:item_id]), alert: 'カートに追加できる最大数量は10個です'
-          else
-            @cart_item = CartItem.new(item_id: params[:item_id], amount: quantity, customer_id: current_customer.id)
-            if @cart_item.save
-              redirect_to cart_items_path, notice: '商品がカートに追加されました'
-            else
-              redirect_to item_path(params[:item_id]), alert: '商品をカートに追加できませんでした'
-            end
-          end
-        end
-      else
-        redirect_to item_path(params[:item_id]), alert: '個数を選択してください'
-      end
+def handle_cart_item(item_id, amount)
+  return redirect_to item_path(item_id), alert: '個数を選択してください' if amount <= 0
+  
+  existing_cart_item = current_customer.cart_items.find_by(item_id: item_id)
+
+  if existing_cart_item
+    update_existing_cart_item(existing_cart_item, amount)
+  else
+    create_new_cart_item(item_id, amount)
+  end
+end
+
+def update_existing_cart_item(existing_cart_item, amount)
+  new_amount = existing_cart_item.amount + amount
+
+    existing_cart_item.amount = new_amount
+    if existing_cart_item.save
+      redirect_to cart_items_path, notice: 'カート内の商品の数量が更新されました'
     else
-      flash[:alert] = "ログインしてください。"
-      redirect_to item_path(params[:item_id])
+      redirect_to item_path(existing_cart_item.item_id), alert: '商品の数量を更新できませんでした'
     end
   end
 end
-end
+
+def create_new_cart_item(item_id, amount)
+    @cart_item = CartItem.new(item_id: item_id, amount: amount, customer_id: current_customer.id)
+    if @cart_item.save
+      redirect_to cart_items_path, notice: '商品がカートに追加されました'
+    else
+      redirect_to item_path(item_id), alert: '商品をカートに追加できませんでした'
+    end
+  end
