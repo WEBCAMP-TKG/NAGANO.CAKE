@@ -9,7 +9,7 @@
       <%= fields_for "order_detail[]", OrderDetail.new do |order_detail| %>
         <div class="row">
           <div class="col-8">
-          <% shipping_cost_ex = 0 %>
+          <% before_total_price = 0 %>
             <table class="table table-bordered">
               <thead style="background-color: #f2f2f2;">
                 <tr>
@@ -26,7 +26,7 @@
                   <td class="align-middle"><%= f.item.price.to_s(:delimited) %></td>
                   <td class="align-middle"><%= f.amount %></td>
                   <td class="align-middle"><%= number_with_delimiter(f.item.price * f.amount) %></td>
-                  <% shipping_cost_ex += f.item.price * f.amount %>
+                  <% before_total_price += f.item.price * f.amount %>
                   <%= order_detail.hidden_field :item_id, value: f.item_id %>
                   <%= order_detail.hidden_field :amount, value: f.amount %>
                   <%= order_detail.hidden_field :price, value: f.item.price %>
@@ -44,11 +44,11 @@
                 </tr>
                 <tr>
                   <th style="background-color: #f2f2f2;">商品合計</th>
-                  <td><%= shipping_cost_ex.to_s(:delimited) %></td>
+                  <td><%= before_total_price.to_s(:delimited) %></td>
                 </tr>
                 <tr>
                   <th style="background-color: #f2f2f2;">請求金額</th>
-                  <td><%= number_with_delimiter(shipping_cost_ex + @order.shipping_fee) %></td>
+                  <td><%= number_with_delimiter(before_total_price + @order.shipping_fee) %></td>
                 </tr>
               </table>
             </div>
@@ -82,7 +82,7 @@
             </div>
           </div>
           <%= f.hidden_field :payment_method, value: params[:order][:payment_method]  %>
-          <%= f.hidden_field :total_price, value: shipping_cost_ex + @order.shipping_fee %>
+          <%= f.hidden_field :total_price, value: before_total_price + @order.shipping_fee %>
           <%= f.hidden_field :shipping_fee, value: @order.shipping_fee %>
           <%= f.hidden_field :status, value: 0 %>
           <div class="text-center"><%= f.submit '注文を確定する', class:"btn btn-success" %></div>
