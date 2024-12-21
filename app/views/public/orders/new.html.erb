@@ -3,7 +3,7 @@
     <h4 class="mb-3"><span style="background-color:#eeeeee">注文情報入力</span></h4>
   </div>
   <div class="container">
-    <%= form_with model: @order, url: orders_confirm_path, method: :get do |f| %>
+    <%= form_with model: @order, url: orders_check_path, method: :get do |f| %>
       <div>
         <div><b>支払方法</b></div>
         <div style="padding-left: 50px;">
@@ -47,11 +47,11 @@
                     </tr>
                     <tr>
                       <td>住所</td>
-                      <td style="padding-bottom: 5px;"><%= address_f.text_field :address, placeholder: "東京都渋谷区代々木神園町0-0", style: "width: 600px;"%></td>
+                      <td style="padding-bottom: 5px;"><%= address_f.text_field :address, placeholder: "東京都西新宿1-1-0", style: "width: 600px;"%></td>
                     </tr>
                     <tr>
                       <td>宛名</td>
-                      <td style="padding-bottom: 5px;"><%= address_f.text_field :name, placeholder: "令和道子", style: "width: 350px;" %></td>
+                      <td style="padding-bottom: 5px;"><%= address_f.text_field :name, placeholder: "大谷翔兵", style: "width: 350px;" %></td>
                     </tr>
                   </tbody>
                 </table>
