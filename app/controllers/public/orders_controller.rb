@@ -65,10 +65,10 @@ class Public::OrdersController < ApplicationController
   private
 
   def order_params
-    order_params = params.require(:order).permit(:customer_id, :name, :address, :postcode, :payment_method, :total_price, :shipping_fee, :status)
+    order_params = params.require(:order).permit(:customer_id, :name, :address, :post_code, :payment_method, :total_price, :shipping_fee, :status)
     order_params[:payment_method] = order_params[:payment_method].to_i if order_params.key?(:payment_method)
     order_params[:status] = order_params[:status].to_i if order_params.key?(:status)
-    order_params.permit(:customer_id, :name, :address, :postcode, :payment_method, :total_price, :shipping_fee, :status)
+    order_params.permit(:customer_id, :name, :address, :post_code, :payment_method, :total_price, :shipping_fee, :status)
   end
 
   def order_detail_params
