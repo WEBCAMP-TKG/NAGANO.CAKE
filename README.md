@@ -12,9 +12,6 @@ InstagramのDMやメールで通販の注文を受けていたが、情報管理
 ・友人や家族へのプレゼントなど、注文者の住所以外にも商品を発送できます。<br>
 ・支払い方法はクレジットカード、銀行振込から選択できます。<br>
 
-# サイトトップページ画像
-
-![Naganocake](git hubのURL張る)
 
 # アプリケーションの機能
 ● 顧客側
@@ -51,7 +48,7 @@ InstagramのDMやメールで通販の注文を受けていたが、情報管理
 |ジャンル設定機能|・ジャンルの追加・変更を行うことができる。|×|
 
 # インストール
-<p>$ git clone gitのURL</p>
+<p>$ git clone https://github.com/WEBCAMP-TKG/nagano.cake.git</p>
 <p>$ cd nagano.cake</p>
 <p>$ bundle install</p>
 <p>$ rails db:migrate</p>
