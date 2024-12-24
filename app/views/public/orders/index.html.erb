@@ -25,7 +25,7 @@
           </td>
           <!--注文商品-->
           <td class="align-middle">
-            <ul>
+            <ul style="list-style-type: none;">
               <% order.order_details.each do |order_detail| %>
                 <li><%= order_detail.item.name %></li>
               <% end %>
