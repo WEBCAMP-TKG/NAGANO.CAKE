@@ -18,8 +18,6 @@ Rails.application.routes.draw do
     post 'orders/confirm', to: 'orders#confirm', as: 'orders_confirm'
     get 'orders/thanx'
     resources :orders, only: [:create, :index, :new, :show]
-    # get 'genres', to: 'admin/genres#index', as: :genres
-    # get 'genres/:id', to: 'admin/genres#show', as: :genre
     get 'customers/mypage', to: 'customers#show'
     get 'customers/information/edit', to: 'customers#edit'
     patch 'customers/information', to: 'customers#update'
@@ -40,9 +38,6 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root :to =>"homes#top"
-    # resources :items
-    # resources :customers
-    # resources :genres
     resources :items, only: [:index, :new, :create, :show, :edit, :update]
     resources :customers, only: [:index, :show, :edit, :update]
     resources :genres, only: [:index, :create, :edit, :update]
