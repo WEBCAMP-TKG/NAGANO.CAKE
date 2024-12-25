@@ -49,7 +49,9 @@ InstagramのDMやメールで通販の注文を受けていたが、情報管理
 
 # インストール
 <p>$ git clone https://github.com/WEBCAMP-TKG/nagano.cake.git</p>
+<p>＊developをzipファイルにてインストールしてください</p>
 <p>$ cd nagano.cake</p>
+<p>yarn add @babel/plugin-proposal-private-methods @babel/plugin-proposal-private-property-in-object</p>
 <p>$ bundle install</p>
 <p>$ rails db:migrate</p>
 <p>$ rails db:seed</p>
